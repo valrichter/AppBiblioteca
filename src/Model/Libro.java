@@ -6,7 +6,6 @@ public class Libro {
     private String titulo;
     private String autor;
     private String genero;
-
     private boolean alquilado;
 
     // Constructor

@@ -3,7 +3,7 @@ import Model.Libro;
 import Model.Usuario;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Biblioteca biblioteca = new Biblioteca();
         Usuario usuario1 = new Usuario(1, "Ricardo", "Fort");
         Libro libro1 = new Libro("1984","George Orwell", "Distopia");
@@ -17,13 +17,20 @@ public class Main {
 //        System.out.println(biblioteca.getUsuarios());
 
         // Agregar libro
-        biblioteca.agregarLibro("1984","George Orwell", "Distopia");
+        biblioteca.agregarLibro(libro1);
+        biblioteca.agregarLibro(libro2);
 //        System.out.println(biblioteca.getLibros());
 
         // Eliminar libro
-        biblioteca.eliminarLibro("1984");
+//        biblioteca.eliminarLibro("El señor de los anillos");
 //        System.out.println(biblioteca.getLibros());
 
+        // Alquilar libro
+        usuario1.alquilarLibro(libro1, biblioteca);
+        usuario1.alquilarLibro(libro1, biblioteca);
+        // Alquilar de nuevo
+//        biblioteca.agregarLibro(libro2);
+//        usuario1.alquilarLibro(libro2, biblioteca);
 
     }
 }
