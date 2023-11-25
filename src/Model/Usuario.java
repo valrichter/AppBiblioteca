@@ -91,9 +91,9 @@ public class Usuario implements Notificable {
         System.out.println("Total de Libros: " + totalLibros);
         System.out.println("Total de Usuarios: " + totalUsuarios);
         System.out.println("Total de libros alquilados: " + totalLibrosAlquilados);
-        System.out.println("Total de cantLibrosPorGenero: " + cantLibrosPorGenero);
-        System.out.println("Total de cantLibrosPorAutor: " + cantLibrosPorAutor);
-        System.out.println("Total de autorMasAlquilado: " + autorMasAlquilado);
+        System.out.println("Cantidad de libros por Genero: " + cantLibrosPorGenero);
+        System.out.println("Cantidad de libros por Autor: " + cantLibrosPorAutor);
+        System.out.println("Autor mas alquilado: " + autorMasAlquilado);
         System.out.println();
         biblioteca.getLibros().forEach(System.out::println);
     }
