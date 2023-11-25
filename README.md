@@ -1,4 +1,4 @@
-# BibliotecAPP en Java para el curso de Neoris - Richter Valentin
+# BibliotecAPP en Java - Richter Valentin
 
 -- CREACIÓN DE UNA APLICACIÓN DE BIBLIOTECA --
 
