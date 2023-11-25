@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Usuario implements Notificable {
     private Integer dni;
@@ -24,10 +24,10 @@ public class Usuario implements Notificable {
     }
 
     public void eliminarLibro(Libro libro, Biblioteca biblioteca) {
-        biblioteca.eliminarLibro(libro);
+        biblioteca.eliminarLibro(libro, this.dni);
     }
 
-    public void alquilarLibro(Libro libro, Biblioteca biblioteca) throws Exception {
+    public void alquilarLibro(Libro libro, Biblioteca biblioteca) {
         Libro libroAlquilado = biblioteca.alquilarLibroAUsuario(libro, this.dni);
         if (libroAlquilado == null) {
             throw new Error("Libro no existe");
@@ -39,7 +39,7 @@ public class Usuario implements Notificable {
     }
 
     public void devolverLibro(Libro libro, Biblioteca biblioteca, LocalDate fechaDevolucion) {
-        biblioteca.devolverLibroDeUsuario(libro);
+        biblioteca.devolverLibroDeUsuario(libro, this.dni);
         for (Alquiler alquiler : alquileres) {
             if (alquiler.getLibro().equals(libro)) {
                 alquiler.getLibro().setAlquilado(false);
@@ -47,6 +47,12 @@ public class Usuario implements Notificable {
                 System.out.println("Libro devuelto -> " + alquiler);
             }
         }
+    }
+
+    public ArrayList<Alquiler> getAlquileresDebidos() {
+        return (ArrayList<Alquiler>) alquileres.stream()
+                .filter(alquiler -> alquiler.getLibro().isAlquilado())
+                .collect(Collectors.toList());
     }
 
     public Libro buscarPorTitulo(String titulo, Biblioteca biblioteca) throws Exception {
@@ -94,7 +100,15 @@ public class Usuario implements Notificable {
 
     @Override
     public void notificarAlquiler(Alquiler alquiler) {
-        System.out.println("Notificación de alquiler para " + alquiler.getUsuario().getNombre() + ": Se ha alquilado el libro " + alquiler.getLibro().getTitulo());
+        System.out.println("Notificación de alquiler para " + alquiler.getUsuario().getNombre() + ": Se ha alquilado el libro " + alquiler.getLibro().getTitulo() + "!");
+    }
+
+    public ArrayList<Alquiler> getAlquileres() {
+        return alquileres;
+    }
+
+    public void setAlquileres(ArrayList<Alquiler> alquileres) {
+        this.alquileres = alquileres;
     }
 
     public Integer getDni() {

@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class Main {
     /*
         1. Gestión de Libros:
-        - Los usuarios pueden agregar nuevos libros a la biblioteca.
-        - Los usuarios pueden eliminar libros de la biblioteca.
+            - Los usuarios pueden agregar nuevos libros a la biblioteca.
+            - Los usuarios pueden eliminar libros de la biblioteca.
     */
     public static void main(String[] args) throws Exception {
         Biblioteca biblioteca = new Biblioteca();
@@ -18,15 +18,16 @@ public class Main {
         Libro libro1 = new Libro("1984", "George Orwell", "Distopia");
 
         // Registro de usuarios
-        System.out.println("Registrar usuario:");
+        System.out.println("Registrar usuario de prueba:");
         biblioteca.registrarUsuario(usuario1);
         // Agregamos unos libros de prueba
+        System.out.println("Agregar libro de prueba");
         usuario1.agregarLibro(libro1, biblioteca);
         System.out.println();
 
-        // Agregar libro
         Scanner scanner = new Scanner(System.in);
 
+        // Agregar libro
         boolean agregarLibro = true;
         while (agregarLibro){
             System.out.println("Desea agregar un libro? SI o NO");
@@ -48,7 +49,7 @@ public class Main {
             }
 
             if (eleccion.toLowerCase().equals("no")) {
-                System.out.println("TODOS LOS LIBROS DISPONIBLES:");
+                System.out.println("TTODOS LOS LIBROS QUE POSEE LA BIBLIOTECA:");
                 biblioteca.getLibros().forEach(System.out::println);
                 System.out.println();
                 agregarLibro = false;
@@ -59,6 +60,7 @@ public class Main {
             }
         }
 
+        // Eliminar libro
         boolean eliminarLibro = true;
         while (eliminarLibro){
             System.out.println("Desea eliminar un libro? SI o NO");
@@ -80,7 +82,7 @@ public class Main {
             }
 
             if (eleccion.toLowerCase().equals("no")) {
-                System.out.println("TODOS LOS LIBROS DISPONIBLES:");
+                System.out.println("TODOS LOS LIBROS QUE POSEE LA BIBLIOTECA:");
                 biblioteca.getLibros().forEach(System.out::println);
                 System.out.println();
                 eliminarLibro = false;
@@ -91,8 +93,8 @@ public class Main {
             }
         }
 
-        // TODOS LOS LIBROS DE LA BIBLIOTECA
-        System.out.println("TODOS LOS LIBROS QUE QUEDARON DESPUES DE AGREGAR Y ELIMNAR:");
+        // MOSTRAR TODOS LOS LIBROS DE LA BIBLIOTECA
+        System.out.println("TODOS LOS LIBROS QUE QUEDARON DESPUES DE AGREGAR Y/O ELIMNAR:");
         biblioteca.getLibros().forEach(System.out::println);
     }
 }

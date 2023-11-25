@@ -30,13 +30,19 @@ public class Biblioteca {
         }
     }
 
+    public void isUsuarioRegistrado(Integer dniUsuario) {
+        if (!usuarios.containsKey(dniUsuario)) {
+            throw new Error("Usted no esta registrado");
+        }
+    }
+
     public void agregarLibro(Libro nuevoLibro) {
         libros.add(nuevoLibro);
         System.out.println("Libro agregado -> '" + nuevoLibro + "'");
     }
 
-    public void eliminarLibro(Libro libro) {
-        // Usar un iterador para evitar ConcurrentModificationException
+    public void eliminarLibro(Libro libro, Integer dniUsuario) {
+        isUsuarioRegistrado(dniUsuario);
         libros.remove(libro);
         System.out.println("Libro eliminado -> '" + libro + "'");
     }
@@ -68,7 +74,8 @@ public class Biblioteca {
         return libroEncontrado;
     }
 
-    public void devolverLibroDeUsuario(Libro libro){
+    public void devolverLibroDeUsuario(Libro libro, Integer dniUsuario){
+        isUsuarioRegistrado(dniUsuario);
         Libro libroEncontrado = libros.stream()
                 .filter(l -> l.getTitulo().equals(libro.getTitulo()))
                 .findFirst()
