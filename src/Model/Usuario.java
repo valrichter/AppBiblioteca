@@ -19,11 +19,12 @@ public class Usuario implements Notificable {
         this.alquileres = new ArrayList<>();
     }
 
-    public void agregarLibro(Libro libro, Biblioteca biblioteca) {
+    public void agregarLibro(Libro libro, Biblioteca biblioteca) throws Exception {
+
         biblioteca.agregarLibro(libro);
     }
 
-    public void eliminarLibro(Libro libro, Biblioteca biblioteca) {
+    public void eliminarLibro(Libro libro, Biblioteca biblioteca) throws Exception {
         biblioteca.eliminarLibro(libro, this.dni);
     }
 

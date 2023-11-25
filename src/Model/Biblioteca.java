@@ -36,15 +36,27 @@ public class Biblioteca {
         }
     }
 
-    public void agregarLibro(Libro nuevoLibro) {
-        libros.add(nuevoLibro);
-        System.out.println("Libro agregado -> '" + nuevoLibro + "'");
+    public boolean isLibroDisponible(Libro libro) {
+            return libros.contains(libro);
     }
 
-    public void eliminarLibro(Libro libro, Integer dniUsuario) {
+    public void agregarLibro(Libro nuevoLibro) throws Exception {
+        if (isLibroDisponible(nuevoLibro)){
+        libros.add(nuevoLibro);
+        System.out.println("Libro agregado -> '" + nuevoLibro + "'");
+        }else {
+            throw new Exception("Libro ya agregado");
+        }
+    }
+
+    public void eliminarLibro(Libro libro, Integer dniUsuario) throws Exception {
         isUsuarioRegistrado(dniUsuario);
-        libros.remove(libro);
-        System.out.println("Libro eliminado -> '" + libro + "'");
+        if (isLibroDisponible(libro)){
+            libros.remove(libro);
+            System.out.println("Libro eliminado -> '" + libro + "'");
+        } else {
+            throw new Exception("Libro no disponible");
+        }
     }
 
     public Libro alquilarLibroAUsuario(Libro libro, Integer dniUsuario) {

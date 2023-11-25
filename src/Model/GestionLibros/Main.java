@@ -49,7 +49,7 @@ public class Main {
             }
 
             if (eleccion.toLowerCase().equals("no")) {
-                System.out.println("TTODOS LOS LIBROS QUE POSEE LA BIBLIOTECA:");
+                System.out.println("TODOS LOS LIBROS QUE POSEE LA BIBLIOTECA:");
                 biblioteca.getLibros().forEach(System.out::println);
                 System.out.println();
                 agregarLibro = false;
