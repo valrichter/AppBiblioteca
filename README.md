@@ -54,6 +54,7 @@ Los proyectos de los estudiantes serán evaluados de acuerdo a los siguientes cr
 4. Ejecutar cada archivo Main por separado para probar las distintas funcionalidades 
 5. Si no anda aplicar la opcion de SDK que proporciona el IDE
 6. Trabajo echo con Java 17
+7. [VIDEO DEMO](https://youtu.be/TVFGOY1oGKg)
 
 ### 1. Gestión de Libros:
 - Los usuarios pueden agregar nuevos libros a la biblioteca  
