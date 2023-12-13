@@ -41,9 +41,9 @@ public class Biblioteca {
     }
 
     public void agregarLibro(Libro nuevoLibro) throws Exception {
-        if (isLibroDisponible(nuevoLibro)){
-        libros.add(nuevoLibro);
-        System.out.println("Libro agregado -> '" + nuevoLibro + "'");
+        if (!isLibroDisponible(nuevoLibro)){
+            libros.add(nuevoLibro);
+            System.out.println("Libro agregado -> '" + nuevoLibro + "'");
         }else {
             throw new Exception("Libro ya agregado");
         }
